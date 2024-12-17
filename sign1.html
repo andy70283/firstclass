@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,8 @@
             border-collapse: collapse;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid black;
             padding: 10px;
             text-align: center;
@@ -20,9 +22,9 @@
         th {
             background-color: lightgray;
         }
-
     </style>
 </head>
+
 <body>
     <div>
         <table>
@@ -34,29 +36,48 @@
             <tr>
                 <td>1</td>
                 <td>A</td>
-                <td>已到</td>
+                <td class="go">已到</td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>B</td>
-                <td>未到</td>
+                <td class="go">未到</td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>C</td>
-                <td>未到</td>
+                <td class="go">未到</td>
             </tr>
             <tr>
                 <td>4</td>
                 <td>D</td>
-                <td>未到</td>
+                <td class="go">未到</td>
             </tr>
             <tr>
                 <td>5</td>
                 <td>E</td>
-                <td>未到</td>
+                <td class="go">未到</td>
             </tr>
         </table>
     </div>
+    <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      localStorage.setItem("sit", "1");
+    });
+    if (localStorage.getItem("sit2") == "1") {
+        document.querySelectorAll(".go")[1].textContent = "已到";
+    }
+    if (localStorage.getItem("sit3") == "1") {
+        document.querySelectorAll(".go")[2].textContent = "已到";
+    }
+    if (localStorage.getItem("sit4") == "1") {
+        document.querySelectorAll(".go")[3].textContent = "已到";
+    }
+    if (localStorage.getItem("sit5") == "1") {
+        document.querySelectorAll(".go")[4].textContent = "已到";
+    }
+
+    </script>
 </body>
+
 </html>

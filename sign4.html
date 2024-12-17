@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,8 @@
             border-collapse: collapse;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid black;
             padding: 10px;
             text-align: center;
@@ -20,9 +22,9 @@
         th {
             background-color: lightgray;
         }
-
     </style>
 </head>
+
 <body>
     <div>
         <table>
@@ -58,5 +60,23 @@
             </tr>
         </table>
     </div>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            localStorage.setItem("sit4", "1");
+        });
+        if (localStorage.getItem("sit") == "1") {
+            document.querySelectorAll(".go")[0].textContent = "已到";
+        }
+        if (localStorage.getItem("sit2") == "1") {
+            document.querySelectorAll(".go")[1].textContent = "已到";
+        }
+        if (localStorage.getItem("sit3") == "1") {
+            document.querySelectorAll(".go")[2].textContent = "已到";
+        }
+        if (localStorage.getItem("sit5") == "1") {
+            document.querySelectorAll(".go")[4].textContent = "已到";
+        }
+    </script>
 </body>
+
 </html>

@@ -58,5 +58,22 @@
             </tr>
         </table>
     </div>
+    <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      localStorage.setItem("sit2", "1");
+    });
+    if (localStorage.getItem("sit") == "1") {
+        document.querySelectorAll(".go")[0].textContent = "已到";
+    }
+    if (localStorage.getItem("sit3") == "1") {
+        document.querySelectorAll(".go")[2].textContent = "已到";
+    }
+    if (localStorage.getItem("sit4") == "1") {
+        document.querySelectorAll(".go")[3].textContent = "已到";
+    }
+    if (localStorage.getItem("sit5") == "1") {
+        document.querySelectorAll(".go")[4].textContent = "已到";
+    }
+    </script>
 </body>
 </html>

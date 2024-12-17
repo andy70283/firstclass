@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多人簽到系統</title>
+</head>
+<body>
+    <h1>多人簽到系統</h1>
+    <div id="status"></div>
+    <button id="signInButton">簽到</button>
+
+    <script>
+        // 解析 URL 參數獲取當前用戶 ID
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('id');
+        const signInButton = document.getElementById('signInButton');
+        const statusDiv = document.getElementById('status');
+
+        if (!userId) {
+            statusDiv.innerHTML = "<p>未提供用戶ID，請使用正確的QR Code！</p>";
+            signInButton.style.display = "none";
+        } else {
+            // 讀取 localStorage 中的簽到狀態
+            let signInData = JSON.parse(localStorage.getItem('signInData')) || {};
+
+            // 顯示所有人的簽到狀態
+            function displaySignInStatus() {
+                let statusHTML = "<h2>簽到狀態：</h2><ul>";
+                for (let key in signInData) {
+                    statusHTML += `<li>${key}: ${signInData[key] ? "已簽到" : "未簽到"}</li>`;
+                }
+                statusHTML += "</ul>";
+                statusDiv.innerHTML = statusHTML;
+
+                if (signInData[userId]) {
+                    signInButton.disabled = true;
+                    signInButton.innerText = "已簽到";
+                }
+            }
+
+            // 點擊簽到按鈕的邏輯
+            signInButton.onclick = () => {
+                signInData[userId] = true; // 標記當前用戶已簽到
+                localStorage.setItem('signInData', JSON.stringify(signInData));
+                displaySignInStatus();
+            };
+
+            // 初始化顯示
+            if (!(userId in signInData)) {
+                signInData[userId] = false; // 初始化當前用戶簽到狀態為未簽到
+                localStorage.setItem('signInData', JSON.stringify(signInData));
+            }
+            displaySignInStatus();
+        }
+    </script>
+</body>
+</html>
