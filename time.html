@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select class="form-select" id="birthyear"></select>
+    <select class="form-select" id="birthmonth"></select>
+    <select class="form-select" id="birthday"></select>
+
+    <script>
+        let year = document.querySelector('#birthyear');
+        let month = document.querySelector('#birthmonth');
+        let day = document.querySelector('#birthday');
+        // let yearvalue = year.value;
+        // let monthvalue = month.value;
+        // let dayvalue = day.value;
+
+
+        for (let i = 1940; i <= 2020; i++) {
+            let option = document.createElement('option');
+            option.value = i;
+            option.innerHTML = i;
+            year.appendChild(option);
+        }
+
+        for (let i = 1; i <= 12; i++) {
+            let option = document.createElement('option');
+            option.value = i;
+            option.innerHTML = i;
+            month.appendChild(option);
+        }
+        month.addEventListener('change',function(){
+        day.innerHTML = '';
+        if (month.value == 2) {
+            for (let i = 1; i <= 28; i++) {
+            let option = document.createElement('option');
+            option.value = i;
+            option.innerHTML = i;
+            day.appendChild(option);
+            }
+        } else if (month.value == 4 || month.value == 6 || month.value == 9 || month.value == 11) {
+            for (let i = 1; i <= 30; i++) {
+            let option = document.createElement('option');
+            option.value = i;
+            option.innerHTML = i;
+            day.appendChild(option);
+            }
+        } else {
+            for (let i = 1; i <= 31; i++) {
+            let option = document.createElement('option');
+            option.value = i;
+            option.innerHTML = i;
+            day.appendChild(option);
+            }
+        }
+        }
+    )
+
+    </script>
+</body>
+
+</html>
